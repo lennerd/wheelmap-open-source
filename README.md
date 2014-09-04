@@ -9,6 +9,7 @@ Source code of wheelmap.org
 If you are working on a mac, please install homebrew. See: http://brew.sh/
 
 Then install the following required tools
+
     brew install git wget
 
 #### Latest ruby 2.1.2 via rbenv
@@ -41,14 +42,17 @@ Restart your shell and install bundler
 ## Getting started
 
 Copy the examle database config and set it right.
+
     cp config/database.SAMPLE.yml config/database.yml
 
 Edit database.yml to reflect your current database settings.
 
 
 Now lets create the actual database and prepare minimal data
+
     bundle exec rake db:create:all db:migrate db:seed
 
 And finally get some POI data into the database:
+
     wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.bz2
     bzcat berlin-latest.osm.bz2 | bundle exec rake osm:import
